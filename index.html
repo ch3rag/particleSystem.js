@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Particle System</title>
+        <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
+        <style>
+            @import url(https://fonts.googleapis.com/css?family=Dosis);
+        </style>
+    </head>
+    <body style="margin: 0">
+        <div id="particle" style="width: 100vw; height:100vh; background-color: blanchedalmond; position: relative;">
+            <p style="position: absolute; top: 0; bottom: 0; height: 100px; margin: auto auto; margin-left: 50px; font-family: 'Dosis', sans-serif; font-size: 5em; font-weight: lighter; color: firebrick">particleSystem.js</p>
+        </div>
+        <script src="./particleSystem.js"></script>
+            <script>
+                const particles = new ParticleSystem(document.getElementById("particle"), {
+                "particle": {
+                    "number": 100,
+                    "color": "red",
+                    "stroke": "blue",
+                    "strokeWeight": 0,
+                    "random": true,
+                    "velocity": 2,
+                    "size": 5,
+                    "opacity": {
+                        "value": 1,
+                        "opacityAnimation": true,
+                        "opacityAnimationSpeed": 0.01
+                    }
+                },
+                "linking": {
+                    "enabled": true,
+                    "lineColor": "black",
+                    "lineWidth": 0.3,
+                    "distance": 200
+                }
+            });
+        </script>
+    </body>
+</html>
