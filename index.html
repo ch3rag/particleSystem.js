@@ -13,28 +13,16 @@
         </div>
         <script src="./particleSystem.js"></script>
             <script>
-                const particles = new ParticleSystem(document.getElementById("particle"), {
-                "particle": {
-                    "number": 100,
-                    "color": "red",
-                    "stroke": "blue",
-                    "strokeWeight": 0,
-                    "random": true,
-                    "velocity": 2,
-                    "size": 5,
-                    "opacity": {
-                        "value": 1,
-                        "opacityAnimation": true,
-                        "opacityAnimationSpeed": 0.01
-                    }
-                },
-                "linking": {
-                    "enabled": true,
-                    "lineColor": "black",
-                    "lineWidth": 0.3,
-                    "distance": 200
-                }
-            });
+                   const p2 = new ParticleSystem(document.getElementById("particle"),
+                   {
+                    "particle": {"number": 90, "color": "random", "stroke": "red", "strokeWeight": 0, "collision": "reflect",
+                                "display": {"size": 8, "random": true},
+                                "opacity": {"value": 1, "random": true, "animate": false, "speed": 0.5},
+                                "velocity": {"direction": "random", "random": false, "value": 2, "x": 10, "y": 20}
+                            },
+                    "linking": {"enabled": true, "distance": 200, "color": "black", "width": 0.3, "mouseLinking": true},
+                    "interaction": {"mousemove": {"enabled": false, "radius": 100, "force": -1000}}
+                   });
         </script>
     </body>
 </html>
