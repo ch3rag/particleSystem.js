@@ -63,6 +63,12 @@ function ParticleSystem(x, obj = {
   this.animateOpacity = assigner(opacityProperties, "animate", false);    // OPACITY ANIMATION ENABLE
   this.randomOpacity = assigner(opacityProperties, "random", false);
   
+  // TRAIL PROPERTIES 
+  let trailProperties = assigner(particleProperties, "trails", {})
+  console.log(trailProperties);
+  this.trails = assigner(trailProperties, "enabled", false);
+  this.trailLength = assigner(trailProperties, "length", 0.05);
+
   //LINKING DEFAULTS
   let linkingProperties = assigner(obj, "linking", {});
   this.linking = assigner(linkingProperties, "enabled", false);
@@ -106,7 +112,13 @@ function ParticleSystem(x, obj = {
     }
   this.createDraw = function() {
     let drawString = "";
-    drawString += "this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);\n"; // CLEAR CANVAS
+    //if(this.trail) {
+      drawString += `this.context.fillStyle = this.parent.style.backgroundColor; this.context.globalAlpha = ${this.trailLength};`;
+      drawString += "this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);";
+      drawString += "this.context.globalAlpha = 0;this.context.fillStyle = this.fillStyle;";
+    // } else {
+    //   drawString += "this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);\n"; // CLEAR CANVAS
+    // }
     if(this.linking) {
       let start = 1;
       if(this.mouseLinking) start = 0;

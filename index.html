@@ -4,23 +4,27 @@
         <title>Particle System</title>
         <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
         <style>
-            @import url(https://fonts.googleapis.com/css?family=Dosis);
+            @import url(https://fonts.googleapis.com/css?family=Dosis|Source+Sans+Pro|Rajdhani|Roboto);
         </style>
     </head>
     <body style="margin: 0">
-        <div id="particle" style="width: 100vw; height:100vh; background-color: blanchedalmond; position: relative;">
-            <p style="position: absolute; top: 0; bottom: 0; height: 100px; margin: auto auto; margin-left: 50px; font-family: 'Dosis', sans-serif; font-size: 5em; font-weight: lighter; color: firebrick">particleSystem.js</p>
+        <div id="particle" style="width: 100vw; height:100vh; background-color: black; position: relative;">
+            <p style="z-index: 9999; position: absolute; top: 0; bottom: 0; height: 100px; margin: auto auto; margin-left: 0px; font-family: 'Rajdhani', sans-serif; font-size: 5em; font-weight: lighter; color: white; padding: 20px; padding-right: 40px; background-color: rgb(214, 0, 100)">particleSystem.js<br>
+                <span style="position: relative; left: 70%; top: -70px; font-size: 0.2em; font-style: italic; color: white; font-family: 'Dosis'">By Chirag Singh Rajput</span></p>
+            
+
         </div>
         <script src="./particleSystem.js"></script>
             <script>
                    const p2 = new ParticleSystem(document.getElementById("particle"),
                    {
-                    "particle": {"number": 90, "color": "random", "stroke": "red", "strokeWeight": 0, "collision": "reflect",
-                                "display": {"size": 8, "random": true},
-                                "opacity": {"value": 1, "random": true, "animate": false, "speed": 0.5},
-                                "velocity": {"direction": "random", "random": false, "value": 2, "x": 10, "y": 20}
+                    "particle": {"number": 90, "stroke": "#057195", "color": "rgb(255,26,111)", "strokeWeight": 0, "collision": "wrap",
+                                "display": {"size": 5, "random": true},
+                                "opacity": {"value": 1, "random": true, "animate": true, "speed": 0.02},
+                                "velocity": {"direction": "random", "random": true, "value": 2, "x": -1, "y": 2},
+                                "trails": {"enabled": true, "length": 0.02}
                             },
-                    "linking": {"enabled": true, "distance": 200, "color": "black", "width": 0.3, "mouseLinking": true},
+                    "linking": {"enabled": true, "distance":200, "color": "gray", "width": 0.2, "mouseLinking": false},
                     "interaction": {"mousemove": {"enabled": false, "radius": 100, "force": -1000}}
                    });
         </script>
