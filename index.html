@@ -1,32 +1,110 @@
 <!doctype html>
 <html>
-    <head>
-        <title>Particle System</title>
-        <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet' type='text/css'>
-        <style>
-            @import url(https://fonts.googleapis.com/css?family=Dosis|Source+Sans+Pro|Rajdhani|Roboto);
-        </style>
-    </head>
-    <body style="margin: 0">
-        <div id="particle" style="width: 100vw; height:100vh; background-color: black; position: relative;">
-            <p style="z-index: 9999; position: absolute; top: 0; bottom: 0; height: 100px; margin: auto auto; margin-left: 0px; font-family: 'Rajdhani', sans-serif; font-size: 5em; font-weight: lighter; color: white; padding: 20px; padding-right: 40px; background-color: rgb(214, 0, 100)">particleSystem.js<br>
-                <span style="position: relative; left: 70%; top: -70px; font-size: 0.2em; font-style: italic; color: white; font-family: 'Dosis'">By Chirag Singh Rajput</span></p>
-            
 
+<head>
+    <title>Particle System</title>
+    <link href='https://fonts.googleapis.com/css?family=Dosis|Rajdhani' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+    <div id="particle">
+        <p>particleSystem.js<br>
+            <span>By Chirag Singh Rajput</span>
+        </p>
+    </div>
+
+    <div class="option-button"></div>
+
+    <div class="side-bar hide">
+        <div class="side-bar-properties-container">
+            <div class="collapsable">Particle</div>
+            <ul class="content">
+
+                <!-- PARTICLE MAIN PROPERTIES -->
+                <li>Number<input type="range" min="0" max="300" class="slider" value="60" id="particleNumber"
+                        value="20" /></li>
+                <li>Stroke<input type="color" class="color-selector" id="particleStrokeColor"
+                        value="black"><br>Randomize<input type="checkbox" id="particleStrokeRandom"></li>
+                <li>Color<input type="color" class="color-selector" id="particleColor"
+                        value="#D60064"><br>Randomize<input type="checkbox" id="particleColorRandom"></li>
+                <li>Stroke Weight<input type="range" min="0" max="10" value="0" class="slider" value="50"
+                        id="particleStrokeWeight"></li>
+                <li>Collision<br><input class="radio-collision" type="radio" value="wrap" name="collision"
+                        checked />Wrap<input class="radio-collision" type="radio" value="reflect"
+                        name="collision" />Reflect</li>
+
+                <!-- DISPLAY -->
+                <div class="collapsable">Display</div>
+                <ul class="content">
+                    <li>Size<input type="range" min="0" max="50" value="5" class="slider" id="particleSize" /></li>
+                    <li>Random<input type="checkbox" id="particleRandomSize" checked></li>
+                </ul>
+
+                <!-- OPACITY -->
+                <div class="collapsable">Opacity</div>
+                <ul class="content">
+                    <li>Value<input type="range" min="0" max="100" value="100" class="slider" id="particleOpacity" />
+                    </li>
+                    <li>Random<input type="checkbox" id="particleOpacityRandom" checked></li>
+                    <li>Animate<input type="checkbox" id="particleOpacityAnimate" checked></li>
+                    <li>Speed<input type="range" min="0" max="100" value="2" class="slider" id="particleOpacitySpeed" />
+                    </li>
+                </ul>
+
+                <!-- VELOCITY -->
+                <div class="collapsable">Velocity</div>
+                <ul class="content">
+                    <li>Direction<br><input type="radio" class="radio-direction" value="fixed"
+                            name="direction" />Fixed<input type="radio" class="radio-direction" name="direction"
+                            value="random" checked />Random</li>
+                    <li>Random<input type="checkbox" id="particleVelocityRandom" checked></li>
+                    <li>Value<input type="range" min="0" max="50" value="2" class="slider" id="particleVelocityValue" />
+                    </li>
+                    <li>x<br><input type="range" min="-50" max="50" value="1" class="slider" id="particleVelocityX" />
+                    </li>
+                    <li>y<br><input type="range" min="-50" max="50" value="1" class="slider" id="particleVelocityY" />
+                    </li>
+                </ul>
+                <!-- TRAILS -->
+                <div class="collapsable">Trails</div>
+                <ul class="content">
+                    <li>Enabled<input type="checkbox" id="particleTrailEnabled" checked></li>
+                    <li>Length<br><input type="range" min="0" max="100" value="98" class="slider"
+                            id="particleTrailLength" /></li>
+                </ul>
+            </ul>
+            <div class="collapsable">Linking</div>
+            <ul class="content">
+                <li>Enabled<input type="checkbox" id="particleLinkingEnabled" checked></li>
+                <li>Distance<br><input type="range" min="0" max="500" value="200" class="slider"
+                        id="particleLinkingDistance" /></li>
+                <li>Width<br><input type="range" min="0" max="300" value="20" class="slider"
+                        id="particleLinkingWidth" /></li>
+                <li>Color<input type="color" value="#808080" class="color-selector" id="particleLinkingColor"></li>
+                <li>Mouse Linking<input type="checkbox" id="particleLinkingMouse"></li>
+            </ul>
+
+            <div class="collapsable">Interaction</div>
+            <ul class="content">
+                <div class="collapsable">Mousemove</div>
+                <ul class="content">
+                    <li>Enabled (Soon)<input type="checkbox" id="particleMousemove>Enabled" disabled></li>
+                    <li>Radius<input type="range" min="0" max="100" value="0" class="slider"
+                            id="particleMousemoveRadius" disabled /></li>
+                    <li>Force<input type="range" min="0" max="100" value="0" class="slider" id="particleMousemoveForce"
+                            disabled /></li>
+                </ul>
+            </ul>
+
+            <div class="collapsable">Background</div>
+            <ul class="content">
+                <li>Color<input type="color" value="black" class="color-selector" id="pageColor"></li>
+            </ul>
         </div>
-        <script src="./particleSystem.js"></script>
-            <script>
-                   const p2 = new ParticleSystem(document.getElementById("particle"),
-                   {
-                    "particle": {"number": 90, "stroke": "#057195", "color": "rgb(255,26,111)", "strokeWeight": 0, "collision": "wrap",
-                                "display": {"size": 5, "random": true},
-                                "opacity": {"value": 1, "random": true, "animate": true, "speed": 0.02},
-                                "velocity": {"direction": "random", "random": true, "value": 2, "x": -1, "y": 2},
-                                "trails": {"enabled": true, "length": 0.02}
-                            },
-                    "linking": {"enabled": true, "distance":200, "color": "gray", "width": 0.2, "mouseLinking": false},
-                    "interaction": {"mousemove": {"enabled": false, "radius": 100, "force": -1000}}
-                   });
-        </script>
-    </body>
+    </div>
+    <script src="./particleSystem.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
 </html>
